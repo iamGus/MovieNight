@@ -12,6 +12,7 @@
 		181EF22A1F7CE3DB00B70039 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 181EF2281F7CE3DB00B70039 /* Main.storyboard */; };
 		181EF22C1F7CE3DB00B70039 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 181EF22B1F7CE3DB00B70039 /* Assets.xcassets */; };
 		181EF22F1F7CE3DB00B70039 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 181EF22D1F7CE3DB00B70039 /* LaunchScreen.storyboard */; };
+		181EF2391F7CE77000B70039 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EF2381F7CE77000B70039 /* Endpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		181EF22B1F7CE3DB00B70039 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		181EF22E1F7CE3DB00B70039 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		181EF2301F7CE3DB00B70039 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		181EF2381F7CE77000B70039 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,8 @@
 		181EF2231F7CE3DB00B70039 /* MovieNight */ = {
 			isa = PBXGroup;
 			children = (
+				181EF2371F7CE6F800B70039 /* Networking */,
+				181EF2361F7CE6CB00B70039 /* Model */,
 				181EF2241F7CE3DB00B70039 /* AppDelegate.swift */,
 				181EF2261F7CE3DB00B70039 /* ViewController.swift */,
 				181EF2281F7CE3DB00B70039 /* Main.storyboard */,
@@ -62,6 +66,21 @@
 				181EF2301F7CE3DB00B70039 /* Info.plist */,
 			);
 			path = MovieNight;
+			sourceTree = "<group>";
+		};
+		181EF2361F7CE6CB00B70039 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		181EF2371F7CE6F800B70039 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				181EF2381F7CE77000B70039 /* Endpoint.swift */,
+			);
+			name = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				181EF2271F7CE3DB00B70039 /* ViewController.swift in Sources */,
+				181EF2391F7CE77000B70039 /* Endpoint.swift in Sources */,
 				181EF2251F7CE3DB00B70039 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
