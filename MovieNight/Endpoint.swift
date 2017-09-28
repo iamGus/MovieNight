@@ -55,8 +55,8 @@ enum TMDb {
         }
     }
     
-    case genre(apiKey: String) //NOTE SHOULD THIS BE TYPE ApiKey?
-    case dicover(apiKey: String, sortBy: TMDbSortType, genres: Genres, runtimeGreater: Int, runtimeLess: Int, page: Int) //NOTE: Still to create Genre type
+    case genre() //NOTE SHOULD THIS BE TYPE ApiKey?
+    case dicover(sortBy: TMDbSortType, genres: [Genre], runtimeGreater: Int, runtimeLess: Int, page: Int)
 }
 
 extension TMDb: Endpoint {
@@ -66,10 +66,33 @@ extension TMDb: Endpoint {
     
     var path: String {
         switch self {
-        case .genre: return "/genre/movie/list"
-        case .dicover: return "/discover/movie"
+        case .genre: return "/3/genre/movie/list"
+        case .dicover: return "/3/discover/movie"
         }
     }
+    
+    var apiKey: String {
+        return "9282f39f30c2df12f3a51c6bae00dcbc"
+    }
+    
+    var queryItem: [URLQueryItem] {
+        switch self {
+        case .genre:
+            return [
+                URLQueryItem(name: "api_key", value: apiKey)
+            ]
+        case .dicover(let sortBy, let genres, let runtimeGreater, let runtimeLess, let page):
+            return [
+                URLQueryItem(name: "api_key", value: apiKey),
+                URLQueryItem(name: "sort_by", value: sortBy.description),
+                URLQueryItem(name: "with_genres", value: genres.map({$0.id.description}).joined(separator: ",")), //Use map to take genres out of array and seperate the id by ,
+                URLQueryItem(name: "with_runtime.gte", value: runtimeGreater.description),
+                URLQueryItem(name: "with_runtime.lte", value: runtimeLess.description),
+                URLQueryItem(name: "page", value: page.description)
+            ]
+        }
+    }
+    
     
 }
 

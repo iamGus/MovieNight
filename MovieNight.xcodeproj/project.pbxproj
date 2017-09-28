@@ -13,6 +13,7 @@
 		181EF22C1F7CE3DB00B70039 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 181EF22B1F7CE3DB00B70039 /* Assets.xcassets */; };
 		181EF22F1F7CE3DB00B70039 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 181EF22D1F7CE3DB00B70039 /* LaunchScreen.storyboard */; };
 		181EF2391F7CE77000B70039 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EF2381F7CE77000B70039 /* Endpoint.swift */; };
+		18F776931F7D1AB200B59DA0 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F776921F7D1AB200B59DA0 /* Genre.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		181EF22E1F7CE3DB00B70039 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		181EF2301F7CE3DB00B70039 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		181EF2381F7CE77000B70039 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		18F776921F7D1AB200B59DA0 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		181EF2361F7CE6CB00B70039 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				18F776921F7D1AB200B59DA0 /* Genre.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				181EF2271F7CE3DB00B70039 /* ViewController.swift in Sources */,
 				181EF2391F7CE77000B70039 /* Endpoint.swift in Sources */,
 				181EF2251F7CE3DB00B70039 /* AppDelegate.swift in Sources */,
+				18F776931F7D1AB200B59DA0 /* Genre.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +326,7 @@
 				181EF2351F7CE3DB00B70039 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

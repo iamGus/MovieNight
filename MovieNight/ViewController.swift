@@ -13,6 +13,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let someGenre = [Genre(id: 35, name: "Comady"), Genre(id: 12, name: "Adventure")]
+        
+        let endpoint = TMDb.dicover(sortBy: .revenueAsc, genres: someGenre, runtimeGreater: 60, runtimeLess: 160, page: 1)
+        let request = endpoint.request
+        print(request)
     }
 
     override func didReceiveMemoryWarning() {
