@@ -9,16 +9,30 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var client = TMDbClient()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let someGenre = [Genre(id: 35, name: "Comady"), Genre(id: 12, name: "Adventure")]
+        //let someGenre = [Genre(id: 35, name: "Comady"), Genre(id: 12, name: "Adventure")]
         
-        let endpoint = TMDb.dicover(sortBy: .revenueAsc, genres: someGenre, runtimeGreater: 60, runtimeLess: 160, page: 1)
-        let request = endpoint.request
-        print(request)
+        //let endpoint = TMDb.dicover(sortBy: .revenueAsc, genres: someGenre, runtimeGreater: 60, runtimeLess: 160, page: 1)
+        //let request = endpoint.request
+        //print(request)
+        
+        client.getGenre() { result in
+            switch result {
+            case .success(let genres):
+                for each in genres {
+                    print("\(each.id), \(each.name)")
+                }
+            case.failure(let error):
+                print(error)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

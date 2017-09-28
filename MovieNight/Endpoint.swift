@@ -71,7 +71,7 @@ extension TMDb: Endpoint {
         }
     }
     
-    var apiKey: String {
+    private var apiKey: String {
         return "9282f39f30c2df12f3a51c6bae00dcbc"
     }
     

@@ -8,7 +8,26 @@
 
 import Foundation
 
-struct Genre {
+class Genre: NSObject, JSONDecodable {
     let id: Int
     let name: String
+    
+    required init?(json: [String: Any]) {
+        
+        struct Key {
+            static let tmdbId = "id"
+            static let tmdbName = "name"
+        }
+        
+        //Checks that, keys in JSON exsist, contain values and covertable to needed type
+        guard let tmdbId = json[Key.tmdbId] as? Int,
+            let tmdbName = json[Key.tmdbName] as? String else {
+                return nil
+        }
+        
+        self.id = tmdbId
+        self.name = tmdbName
+    }
 }
+
+
