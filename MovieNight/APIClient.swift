@@ -66,7 +66,7 @@ extension APIClient {
         
         return task
     }
-    
+    ///Description
     func fetch<T: JSONDecodable>(with request: URLRequest, parse: @escaping (JSON) -> [T], completion: @escaping (Result<[T], APIError>) -> Void) {
         let task = jsonTask(with: request) { json, error in
             
