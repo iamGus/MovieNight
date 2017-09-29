@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         //let endpoint = TMDb.dicover(sortBy: .revenueAsc, genres: someGenre, runtimeGreater: 60, runtimeLess: 160, page: 1)
         //let request = endpoint.request
         //print(request)
-        
+        /*
         client.getGenre() { [weak self] result in
             switch result {
             case .success(let genres):
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
                 print(error)
             }
         }
-        
+        */
 
     }
 
