@@ -10,36 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var client = TMDbClient()
-    
-    var storeGnre = [Genre]()
-    var coupleOfCats = [Genre]()
+    var user1: User?
+    var user2: User?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        //let someGenre = [Genre(id: 35, name: "Comady"), Genre(id: 12, name: "Adventure")]
-        
-        //let endpoint = TMDb.dicover(sortBy: .revenueAsc, genres: someGenre, runtimeGreater: 60, runtimeLess: 160, page: 1)
-        //let request = endpoint.request
-        //print(request)
-        /*
-        client.getGenre() { [weak self] result in
-            switch result {
-            case .success(let genres):
-                for each in genres {
-                    print("\(each.id), \(each.name)")
-                    self?.storeGnre.append(each)
-                }
-                self?.coupleOfCats = [(self?.storeGnre[0])!, (self?.storeGnre[5])!]
-                self?.getMovieNow()
-            case.failure(let error):
-                print(error)
-            }
-        }
-        */
+
 
     }
 
@@ -47,23 +24,48 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    func getMovieNow() {
-        client.getMovieSuggestions(sortBy: .popularityDesc, genres: coupleOfCats, runtimeGreater: 80, runTimeLess: 180, page: 1) { result in
-            switch result {
-            case .success(let movies):
-                for each in movies {
-                    print("Film name: \(each.title), Vote: \(each.averageVote)")
-                }
-            case .failure(let error):
-                print(error)
-            }
-            
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "aaab" {
+            let VC = segue.destination as? PickGenreController
+            VC?.delegate = self
+        } else if segue.identifier == "pickMaxRunTime" {
         }
     }
     
     
+    /*
+    if let segueToPickGenre = segue.destination as? PickGenreController {
+        segueToPickGenre.delegate = self
+    } else if let segueToPickRuntime = segue.destination as? PickRuntimeController {
+        segueToPickRuntime.delegate = self
+    }
+    */
+    @IBAction func unwindToVC1(segue: UIStoryboardSegue) {
     
+    }
+
 
 }
 
+extension ViewController: MovieGenreDelegate {
+    
+    func recordGenreSelected(user: Int, genre: Genre) {
+        print("record genre started")
+        if user == 1 {
+            user1 = User(chosenGenre: genre)
+            print(user1?.chosenGenre)
+        } else {
+            user2 = User(chosenGenre: genre)
+            print(user2?.chosenGenre)
+        }
+    }
+    
+    func recordRuntimeSelected(user: Int, runtime: Runtime) {
+        if user == 1 {
+            user1?.maxRuntime = runtime
+            print(user1?.maxRuntime)
+        }
+    }
+    
+}

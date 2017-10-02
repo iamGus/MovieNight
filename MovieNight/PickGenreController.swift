@@ -8,17 +8,24 @@
 
 import UIKit
 
+protocol MovieGenreDelegate: class {
+    func recordGenreSelected(user: Int, genre: Genre)
+    func recordRuntimeSelected(user: Int, runtime: Runtime)
+}
+
 class PickGenreController: UITableViewController {
     
     let dataSource = GenreDataSource()
     let client = TMDbClient()
+    
+    weak var delegate: MovieGenreDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = dataSource
         tableView.separatorColor = UIColor(red: 240/255, green: 177/255, blue: 177/255, alpha: 1)
-        definesPresentationContext = true
+        //definesPresentationContext = true
         
         
         client.getGenre() { [weak self] result in
@@ -38,21 +45,37 @@ class PickGenreController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+}
 
- 
+// To make delegate func to send array of downladoed genre to main viewconroller
 
 
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+
+// MARK: - Navigation
+extension PickGenreController: MovieRuntimeDelegate {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "pickMaxRunTime", sender: nil)
     }
     
-
+    //NO ELSE CLAUSE IN
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "pickMaxRunTime" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                if let pickRuntimeViewController = segue.destination as? PickRuntimeController {
+                    let genre = dataSource.genre(at: indexPath)
+                    pickRuntimeViewController.delegate = self
+                    //Send picked genre for that user to main view controller
+                    delegate?.recordGenreSelected(user: 1, genre: genre)
+                    print("should have just sent data \(genre.name)")
+                }
+            
+            }
+            
+        }
+    }
+    
+    func recordRuntimeSelectedFromV3(user: Int, runtime: Runtime) {
+    delegate?.recordRuntimeSelected(user: user, runtime: runtime)
+    }
 }
