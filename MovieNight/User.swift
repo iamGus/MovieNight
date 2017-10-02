@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct User {
-    var chosenGenre: Genre
+enum User {
+    case user1
+    case user2
+    case noneSelected
+}
+
+struct UserChoices {
+    var chosenGenre: Genre?
     var maxRuntime: Runtime?
 }
 
-extension User {
-    init(chosenGenre: Genre) {
-        self.chosenGenre = chosenGenre
-        self.maxRuntime = nil
-    }
-}

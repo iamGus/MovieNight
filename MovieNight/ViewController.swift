@@ -10,62 +10,70 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var user1: User?
-    var user2: User?
+    // Outlets
+    @IBOutlet weak var userButton1Label: UIButton!
+    @IBOutlet weak var userButton2Label: UIButton!
+    @IBOutlet weak var viewResultsButtonLabel: UIButton!
+    
+    // To store what Genre and Runtime user 1 and 2 select before searching for films
+    var userSelection = UserSelectionDatasource()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+// MARK: - Navigation
+    
+    // Set self as deligate for PickGenre controller.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "aaab" {
-            let VC = segue.destination as? PickGenreController
-            VC?.delegate = self
-        } else if segue.identifier == "pickMaxRunTime" {
+        if let VC = segue.destination as? PickGenreController {
+            VC.delegate = self
+        } else {
+            print("ERROR CODE")
         }
     }
     
-    
-    /*
-    if let segueToPickGenre = segue.destination as? PickGenreController {
-        segueToPickGenre.delegate = self
-    } else if let segueToPickRuntime = segue.destination as? PickRuntimeController {
-        segueToPickRuntime.delegate = self
-    }
-    */
+    // Just so a unwide segue can be performed
     @IBAction func unwindToVC1(segue: UIStoryboardSegue) {
     
     }
 
 
 }
-
+// MARK: - Record user selection
 extension ViewController: MovieGenreDelegate {
     
-    func recordGenreSelected(user: Int, genre: Genre) {
-        print("record genre started")
-        if user == 1 {
-            user1 = User(chosenGenre: genre)
-            print(user1?.chosenGenre)
+    // Record what Genre user 1 and 2 select
+    func recordGenreSelected(user: User, genre: Genre) {
+        userSelection.addGenre(user: user, genre: genre)
+        checkStateOfSelection()
+    }
+    
+    // Record what Runtime user 1 and 2 select
+    func recordRuntimeSelected(user: User, runtime: Runtime) {
+        userSelection.addRuntime(user: user, runtime: runtime)
+        checkStateOfSelection()
+    }
+    
+    // Checks the state for both users
+    func checkStateOfSelection() {
+        if userSelection.isUserReady(user: .user1) {
+            userButton1Label.setImage(#imageLiteral(resourceName: "bubble-selected"), for: .normal)
         } else {
-            user2 = User(chosenGenre: genre)
-            print(user2?.chosenGenre)
+            // set user 1 not ready state
+            userButton1Label.setImage(#imageLiteral(resourceName: "bubble-empty"), for: .normal)
+        }
+        
+        if userSelection.isUserReady(user: .user2) {
+            userButton2Label.setImage(#imageLiteral(resourceName: "bubble-selected"), for: .normal)
+        } else {
+            //set user 2 not ready
+            userButton2Label.setImage(#imageLiteral(resourceName: "bubble-empty"), for: .normal)
         }
     }
     
-    func recordRuntimeSelected(user: Int, runtime: Runtime) {
-        if user == 1 {
-            user1?.maxRuntime = runtime
-            print(user1?.maxRuntime)
-        }
-    }
+
     
 }

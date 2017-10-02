@@ -9,13 +9,14 @@
 import UIKit
 
 protocol MovieRuntimeDelegate: class {
-    func recordRuntimeSelectedFromV3(user: Int, runtime: Runtime)
+    func recordRuntimeSelectedFromV3(user: User, runtime: Runtime)
 }
 
 class PickRuntimeController: UITableViewController {
     
     var chosenGenre: Genre?  //AM I using this?
     var dataSource = RuntimeDataSource()
+    var currentUser: User = .noneSelected
     
     weak var delegate: MovieRuntimeDelegate?
 
@@ -46,7 +47,7 @@ extension PickRuntimeController {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let runtime = dataSource.runtime(at: indexPath)
                 //Send picked genre for that user to main view controller
-                delegate?.recordRuntimeSelectedFromV3(user: 1, runtime: runtime)
+                delegate?.recordRuntimeSelectedFromV3(user: User.user1, runtime: runtime)
                 
             }
             

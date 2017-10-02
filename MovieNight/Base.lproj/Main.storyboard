@@ -86,6 +86,11 @@
                             <color key="tintColor" red="0.94176238779999999" green="0.69588702920000001" blue="0.69494169949999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="userButton1Label" destination="EVV-3p-YLU" id="jjs-Ad-NI7"/>
+                        <outlet property="userButton2Label" destination="Mpg-zc-FSQ" id="3vC-q1-VrZ"/>
+                        <outlet property="viewResultsButtonLabel" destination="aAe-qi-KhX" id="7ZJ-ke-1rL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

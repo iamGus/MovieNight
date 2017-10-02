@@ -20,6 +20,7 @@
 		18F61A591F7EA16F006F9F9D /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F61A581F7EA16F006F9F9D /* Runtime.swift */; };
 		18F711EC1F82223E00EC1CF6 /* RuntimeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F711EB1F82223E00EC1CF6 /* RuntimeDataSource.swift */; };
 		18F711F21F82383C00EC1CF6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F711F11F82383C00EC1CF6 /* User.swift */; };
+		18F711F41F82836E00EC1CF6 /* UserSelectionDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F711F31F82836E00EC1CF6 /* UserSelectionDatasource.swift */; };
 		18F776931F7D1AB200B59DA0 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F776921F7D1AB200B59DA0 /* Genre.swift */; };
 		18F776951F7D342B00B59DA0 /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F776941F7D342B00B59DA0 /* JSONDecodable.swift */; };
 		18F776971F7D353E00B59DA0 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F776961F7D353E00B59DA0 /* APIClient.swift */; };
@@ -43,6 +44,7 @@
 		18F61A581F7EA16F006F9F9D /* Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		18F711EB1F82223E00EC1CF6 /* RuntimeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuntimeDataSource.swift; sourceTree = "<group>"; };
 		18F711F11F82383C00EC1CF6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		18F711F31F82836E00EC1CF6 /* UserSelectionDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelectionDatasource.swift; sourceTree = "<group>"; };
 		18F776921F7D1AB200B59DA0 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		18F776941F7D342B00B59DA0 /* JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
 		18F776961F7D353E00B59DA0 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				18F61A301F7E5602006F9F9D /* GenreDataSource.swift */,
 				18F711EB1F82223E00EC1CF6 /* RuntimeDataSource.swift */,
+				18F711F31F82836E00EC1CF6 /* UserSelectionDatasource.swift */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				18F61A311F7E5602006F9F9D /* GenreDataSource.swift in Sources */,
 				18F61A571F7E8C28006F9F9D /* PickRuntimeController.swift in Sources */,
 				181EF2391F7CE77000B70039 /* Endpoint.swift in Sources */,
+				18F711F41F82836E00EC1CF6 /* UserSelectionDatasource.swift in Sources */,
 				18F711F21F82383C00EC1CF6 /* User.swift in Sources */,
 				181EF2251F7CE3DB00B70039 /* AppDelegate.swift in Sources */,
 				18F711EC1F82223E00EC1CF6 /* RuntimeDataSource.swift in Sources */,

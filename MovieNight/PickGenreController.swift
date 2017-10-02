@@ -9,14 +9,15 @@
 import UIKit
 
 protocol MovieGenreDelegate: class {
-    func recordGenreSelected(user: Int, genre: Genre)
-    func recordRuntimeSelected(user: Int, runtime: Runtime)
+    func recordGenreSelected(user: User, genre: Genre)
+    func recordRuntimeSelected(user: User, runtime: Runtime)
 }
 
 class PickGenreController: UITableViewController {
     
     let dataSource = GenreDataSource()
     let client = TMDbClient()
+    var currentUser: User = .noneSelected
     
     weak var delegate: MovieGenreDelegate?
 
@@ -66,7 +67,7 @@ extension PickGenreController: MovieRuntimeDelegate {
                     let genre = dataSource.genre(at: indexPath)
                     pickRuntimeViewController.delegate = self
                     //Send picked genre for that user to main view controller
-                    delegate?.recordGenreSelected(user: 1, genre: genre)
+                    delegate?.recordGenreSelected(user: User.user1, genre: genre)
                     print("should have just sent data \(genre.name)")
                 }
             
@@ -75,7 +76,7 @@ extension PickGenreController: MovieRuntimeDelegate {
         }
     }
     
-    func recordRuntimeSelectedFromV3(user: Int, runtime: Runtime) {
+    func recordRuntimeSelectedFromV3(user: User, runtime: Runtime) {
     delegate?.recordRuntimeSelected(user: user, runtime: runtime)
     }
 }
