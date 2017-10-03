@@ -14,26 +14,17 @@ protocol MovieRuntimeDelegate: class {
 
 class PickRuntimeController: UITableViewController {
     
-    var chosenGenre: Genre?  //AM I using this?
     var dataSource = RuntimeDataSource()
-    var currentUser: User = .noneSelected
+    var currentUser: User = .noneSelected // Track which user currently using view
     
     weak var delegate: MovieRuntimeDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // Setup tableview datasource and seperator colour
         tableView.dataSource = dataSource
         tableView.separatorColor = UIColor(red: 240/255, green: 177/255, blue: 177/255, alpha: 1)
-
-     
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
 
 // MARK: - Navigation
@@ -46,11 +37,12 @@ extension PickRuntimeController {
         if segue.identifier == "unwindSegueToVC1" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let runtime = dataSource.runtime(at: indexPath)
-                //Send picked genre for that user to main view controller
-                delegate?.recordRuntimeSelectedFromV3(user: User.user1, runtime: runtime)
+                //Send picked genre for that user to genre view controller
+                delegate?.recordRuntimeSelectedFromV3(user: currentUser, runtime: runtime)
                 
+            } else {
+                // Indexpath not unwrapped error
             }
-            
         }
     }
 }

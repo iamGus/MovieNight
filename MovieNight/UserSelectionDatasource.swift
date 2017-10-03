@@ -38,13 +38,21 @@ class UserSelectionDatasource {
                 return false
             }
         case .user2:
-            if let _ = user1.chosenGenre, (user2.maxRuntime != nil) {
+            if user2.chosenGenre != nil && user2.maxRuntime != nil {
                 return true
             } else {
                 return false
             }
         case .noneSelected: return false //Do I NEED TO SHOW ERROR
         }
+    }
+    
+    // Reset stored peoperties for user selectio back to nil
+    func resetUsers() {
+        user1.chosenGenre = nil
+        user1.maxRuntime = nil
+        user2.chosenGenre = nil
+        user2.maxRuntime = nil
     }
     
 }

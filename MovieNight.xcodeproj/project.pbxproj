@@ -13,6 +13,8 @@
 		181EF22C1F7CE3DB00B70039 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 181EF22B1F7CE3DB00B70039 /* Assets.xcassets */; };
 		181EF22F1F7CE3DB00B70039 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 181EF22D1F7CE3DB00B70039 /* LaunchScreen.storyboard */; };
 		181EF2391F7CE77000B70039 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EF2381F7CE77000B70039 /* Endpoint.swift */; };
+		18371AF01F83A4FD00EB4427 /* MovieResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18371AEF1F83A4FD00EB4427 /* MovieResultsViewController.swift */; };
+		18371AF21F83A6B200EB4427 /* MovieResultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18371AF11F83A6B200EB4427 /* MovieResultsDataSource.swift */; };
 		18F61A2B1F7E223B006F9F9D /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F61A2A1F7E223B006F9F9D /* Movie.swift */; };
 		18F61A2F1F7E529E006F9F9D /* PickGenreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F61A2E1F7E529E006F9F9D /* PickGenreController.swift */; };
 		18F61A311F7E5602006F9F9D /* GenreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F61A301F7E5602006F9F9D /* GenreDataSource.swift */; };
@@ -37,6 +39,8 @@
 		181EF22E1F7CE3DB00B70039 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		181EF2301F7CE3DB00B70039 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		181EF2381F7CE77000B70039 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		18371AEF1F83A4FD00EB4427 /* MovieResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieResultsViewController.swift; sourceTree = "<group>"; };
+		18371AF11F83A6B200EB4427 /* MovieResultsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieResultsDataSource.swift; sourceTree = "<group>"; };
 		18F61A2A1F7E223B006F9F9D /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		18F61A2E1F7E529E006F9F9D /* PickGenreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickGenreController.swift; sourceTree = "<group>"; };
 		18F61A301F7E5602006F9F9D /* GenreDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreDataSource.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 				181EF2261F7CE3DB00B70039 /* ViewController.swift */,
 				18F61A2E1F7E529E006F9F9D /* PickGenreController.swift */,
 				18F61A561F7E8C28006F9F9D /* PickRuntimeController.swift */,
+				18371AEF1F83A4FD00EB4427 /* MovieResultsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 				18F61A301F7E5602006F9F9D /* GenreDataSource.swift */,
 				18F711EB1F82223E00EC1CF6 /* RuntimeDataSource.swift */,
 				18F711F31F82836E00EC1CF6 /* UserSelectionDatasource.swift */,
+				18371AF11F83A6B200EB4427 /* MovieResultsDataSource.swift */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -211,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18371AF21F83A6B200EB4427 /* MovieResultsDataSource.swift in Sources */,
 				181EF2271F7CE3DB00B70039 /* ViewController.swift in Sources */,
 				18F7769B1F7D44DB00B59DA0 /* TMDbClient.swift in Sources */,
 				18F61A2B1F7E223B006F9F9D /* Movie.swift in Sources */,
@@ -223,6 +230,7 @@
 				18F711F21F82383C00EC1CF6 /* User.swift in Sources */,
 				181EF2251F7CE3DB00B70039 /* AppDelegate.swift in Sources */,
 				18F711EC1F82223E00EC1CF6 /* RuntimeDataSource.swift in Sources */,
+				18371AF01F83A4FD00EB4427 /* MovieResultsViewController.swift in Sources */,
 				18F61A2F1F7E529E006F9F9D /* PickGenreController.swift in Sources */,
 				18F776991F7D394800B59DA0 /* Result.swift in Sources */,
 				18F776931F7D1AB200B59DA0 /* Genre.swift in Sources */,

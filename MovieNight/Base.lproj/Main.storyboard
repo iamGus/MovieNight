@@ -32,6 +32,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="97"/>
                                         <state key="normal" image="bubble-empty"/>
                                         <connections>
+                                            <action selector="UserSelectionButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XQC-v0-Cow"/>
                                             <segue destination="6C6-Rr-dhF" kind="show" identifier="aaab" id="AAT-H0-nQB"/>
                                         </connections>
                                     </button>
@@ -39,6 +40,7 @@
                                         <rect key="frame" x="160" y="0.0" width="160" height="97"/>
                                         <state key="normal" image="bubble-empty"/>
                                         <connections>
+                                            <action selector="UserSelectionButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NGS-fn-IhL"/>
                                             <segue destination="6C6-Rr-dhF" kind="show" id="MYp-8y-kfI"/>
                                         </connections>
                                     </button>
@@ -84,6 +86,9 @@
                     <navigationItem key="navigationItem" title="Movie Night" id="exy-ee-xD3">
                         <barButtonItem key="rightBarButtonItem" title="Clear" id="2kG-VJ-L9f">
                             <color key="tintColor" red="0.94176238779999999" green="0.69588702920000001" blue="0.69494169949999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="ClearSelectionButton:" destination="BYZ-38-t0r" id="ehS-HY-J6w"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -105,7 +110,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="T99-v0-7ty">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" id="T99-v0-7ty">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T99-v0-7ty" id="fvX-kK-P3D">

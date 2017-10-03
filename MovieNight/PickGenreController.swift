@@ -17,65 +17,69 @@ class PickGenreController: UITableViewController {
     
     let dataSource = GenreDataSource()
     let client = TMDbClient()
-    var currentUser: User = .noneSelected
+    var currentUser: User = .noneSelected // Track which user currently using view
     
     weak var delegate: MovieGenreDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set up tableview datasource and seperator colour
         tableView.dataSource = dataSource
         tableView.separatorColor = UIColor(red: 240/255, green: 177/255, blue: 177/255, alpha: 1)
-        //definesPresentationContext = true
         
-        
+        // Get Genre data from tmdb and update datasource
         client.getGenre() { [weak self] result in
             switch result {
             case .success(let genres):
-                self?.dataSource.update(with: genres)
-                self?.tableView.reloadData()
+                self?.dataSource.update(with: genres) // update datasource
+                self?.tableView.reloadData() // Reload table data
             case.failure(let error):
                 print(error)
             }
         }
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
 }
 
-// To make delegate func to send array of downladoed genre to main viewconroller
 
+// MARK: - Navigation and Delegates
 
-
-
-// MARK: - Navigation
+// Navigate to PickRuntimeController when a Genre is selected
 extension PickGenreController: MovieRuntimeDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "pickMaxRunTime", sender: nil)
     }
     
-    //NO ELSE CLAUSE IN
+    //Set Runtime Delegate to self and inform main Viewcotroller Genre selected
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pickMaxRunTime" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 if let pickRuntimeViewController = segue.destination as? PickRuntimeController {
                     let genre = dataSource.genre(at: indexPath)
+                    
+                    //Set Runtime Delefate to self
                     pickRuntimeViewController.delegate = self
+                    
+                    //Tell pickRuntimeViewController which user is currently selected
+                    pickRuntimeViewController.currentUser = currentUser
+                    
                     //Send picked genre for that user to main view controller
-                    delegate?.recordGenreSelected(user: User.user1, genre: genre)
-                    print("should have just sent data \(genre.name)")
+                    delegate?.recordGenreSelected(user: currentUser, genre: genre)
+                } else {
+                    // COULD NOT DETECT PICKRUNTIMECONTROLLER ERROR
                 }
             
+            } else {
+                // COULD NOT GET SELECTED ROW ERROR
             }
             
         }
     }
     
+
+    // Gets Runtime from PickRuntimeController and sends data to main viewcontroller
     func recordRuntimeSelectedFromV3(user: User, runtime: Runtime) {
     delegate?.recordRuntimeSelected(user: user, runtime: runtime)
     }

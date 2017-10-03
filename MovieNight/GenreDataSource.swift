@@ -43,7 +43,7 @@ class GenreDataSource: NSObject, UITableViewDataSource {
     
     // MARK: - Helper
     
-    //NOTE CHECk I USE THIS - TO Pull OUT THE CHOSEN GENRE
+    // Return just that Genre info for that selected row
     func genre(at indexPath: IndexPath) -> Genre {
         return data[indexPath.row]
     }

@@ -40,7 +40,7 @@ class RuntimeDataSource: NSObject, UITableViewDataSource {
     
     // MARK: - Helper
     
-    //NOTE CHECk I USE THIS - TO Pull OUT THE CHOSEN GENRE
+    //Return just that Runtime data for that selected row
     func runtime(at indexPath: IndexPath) -> Runtime {
         return data[indexPath.row]
     }

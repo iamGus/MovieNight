@@ -18,6 +18,9 @@ class ViewController: UIViewController {
     // To store what Genre and Runtime user 1 and 2 select before searching for films
     var userSelection = UserSelectionDatasource()
     
+    // Record which user currently selected for choices, note this is only being passed to other view controllers, other controllers then return selected user info with genre and runtime info. As we already know who is seected with this property is that needed? Modification could be to not pass back current user selected bu use this property with the selection datasource methods.
+    var currentUser: User = .noneSelected
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +29,26 @@ class ViewController: UIViewController {
     
 // MARK: - Navigation
     
+    // Set current user selected depending on which user button pressed.
+    @IBAction func UserSelectionButtons(_ sender: UIButton) {
+        if sender == userButton1Label {
+            currentUser = .user1
+        } else {
+            currentUser = .user2
+        }
+    }
+    
+    
     // Set self as deligate for PickGenre controller.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let VC = segue.destination as? PickGenreController {
-            VC.delegate = self
+        if let pickGenreViewController = segue.destination as? PickGenreController {
+            pickGenreViewController.delegate = self
+            pickGenreViewController.currentUser = currentUser
+            print(currentUser)
+        } else if let movieResultsViewController = segue.destination as? MovieResultsViewController {
+            movieResultsViewController.userSelection = userSelection
         } else {
-            print("ERROR CODE")
+            // If let to view contoller did not work
         }
     }
     
@@ -39,26 +56,33 @@ class ViewController: UIViewController {
     @IBAction func unwindToVC1(segue: UIStoryboardSegue) {
     
     }
-
+    
+    // Clear user selection
+    @IBAction func ClearSelectionButton(_ sender: Any) {
+        currentUser = .noneSelected
+        userSelection.resetUsers() // Reset stored selction properties to nil
+        setStateOfSelection() // Set buttons back to empty
+    }
+    
 
 }
-// MARK: - Record user selection
+// MARK: - User selection
 extension ViewController: MovieGenreDelegate {
     
     // Record what Genre user 1 and 2 select
-    func recordGenreSelected(user: User, genre: Genre) {
+    func recordGenreSelected(user: User, genre: Genre) { // Called from GenreController
         userSelection.addGenre(user: user, genre: genre)
-        checkStateOfSelection()
+        setStateOfSelection()
     }
     
     // Record what Runtime user 1 and 2 select
-    func recordRuntimeSelected(user: User, runtime: Runtime) {
+    func recordRuntimeSelected(user: User, runtime: Runtime) { // Called from GenreController
         userSelection.addRuntime(user: user, runtime: runtime)
-        checkStateOfSelection()
+        setStateOfSelection()
     }
     
-    // Checks the state for both users
-    func checkStateOfSelection() {
+    // Checks the state for both users, make appropriate changes
+    func setStateOfSelection() {
         if userSelection.isUserReady(user: .user1) {
             userButton1Label.setImage(#imageLiteral(resourceName: "bubble-selected"), for: .normal)
         } else {

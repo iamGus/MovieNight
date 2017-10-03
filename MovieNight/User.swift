@@ -8,12 +8,14 @@
 
 import Foundation
 
+// Model for tracking which user currently going through movie selection
 enum User {
     case user1
     case user2
     case noneSelected
 }
 
+// For User datasource, store what movie choices user makes
 struct UserChoices {
     var chosenGenre: Genre?
     var maxRuntime: Runtime?
