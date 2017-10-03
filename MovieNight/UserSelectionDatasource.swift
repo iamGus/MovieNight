@@ -55,4 +55,24 @@ class UserSelectionDatasource {
         user2.maxRuntime = nil
     }
     
+    //Mark: - Returning results for film search
+    
+    //Return both user Genres
+    func chosenGenres() -> [Genre] {
+        if let user1Genre = user1.chosenGenre, let user2Genre = user2.chosenGenre {
+            return [user1Genre, user2Genre]
+        }
+        return [] // DO I NEED TO DO ANYTHING HERE?
+    }
+    
+    func averageMaxRuntime() -> Int {
+        if let user1Runtime = user1.maxRuntime, let user2Runtime = user2.maxRuntime {
+            let averageRuntime = (user1Runtime.minutes + user2Runtime.minutes) / 2
+            print(averageRuntime)
+            return averageRuntime
+        }
+        
+        return 130 // DO I NEED TO DO ANYTHING HERE?
+    }
+    
 }

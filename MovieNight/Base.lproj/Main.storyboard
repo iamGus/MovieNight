@@ -101,10 +101,10 @@
             </objects>
             <point key="canvasLocation" x="1152.8" y="-583.3583208395803"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Movie Results View Controller-->
         <scene sceneID="yX2-eT-1nJ">
             <objects>
-                <tableViewController id="NlL-3i-Hkg" sceneMemberID="viewController">
+                <tableViewController id="NlL-3i-Hkg" customClass="MovieResultsViewController" customModule="MovieNight" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7co-La-zqx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
