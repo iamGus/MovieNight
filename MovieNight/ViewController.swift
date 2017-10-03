@@ -46,7 +46,12 @@ class ViewController: UIViewController {
             pickGenreViewController.currentUser = currentUser
             print(currentUser)
         } else if let movieResultsViewController = segue.destination as? MovieResultsViewController {
-            movieResultsViewController.userSelection = userSelection
+            if userSelection.areUsersReady() == true {
+               movieResultsViewController.userSelection = userSelection
+            } else {
+                showAlert(title: "Alert", message: "Please make sure both users have made a selection")
+            }
+            
         } else {
             // If let to view contoller did not work
         }
@@ -98,6 +103,15 @@ extension ViewController: MovieGenreDelegate {
         }
     }
     
+    // Generic alert pop up function used for all error handling notifications
+    func showAlert(title: String, message: String, style: UIAlertControllerStyle = .alert) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+        
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
 
     
 }

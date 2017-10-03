@@ -47,6 +47,15 @@ class UserSelectionDatasource {
         }
     }
     
+    // Check if both users have selected both Genre and Runtime
+    func areUsersReady() -> Bool {
+        if isUserReady(user: .user1) == true && isUserReady(user: .user2) == true {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     // Reset stored peoperties for user selectio back to nil
     func resetUsers() {
         user1.chosenGenre = nil

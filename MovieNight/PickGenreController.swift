@@ -83,4 +83,16 @@ extension PickGenreController: MovieRuntimeDelegate {
     func recordRuntimeSelectedFromV3(user: User, runtime: Runtime) {
     delegate?.recordRuntimeSelected(user: user, runtime: runtime)
     }
+    
+    // MARK: - Notifications
+    
+    // Generic alert pop up function used for all error handling notifications
+    func showAlert(title: String, message: String, style: UIAlertControllerStyle = .alert) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+        
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
 }
