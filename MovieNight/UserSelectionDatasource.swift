@@ -18,7 +18,7 @@ class UserSelectionDatasource {
         switch user {
         case .user1: user1.chosenGenre = genre
         case .user2: user2.chosenGenre = genre
-        case .noneSelected: return // DO I NEED TO SHOW ERROR
+        case .noneSelected: return // Maybe add additional error handling
         }
     }
     
@@ -26,11 +26,11 @@ class UserSelectionDatasource {
         switch user {
         case .user1: user1.maxRuntime = runtime
         case .user2: user2.maxRuntime = runtime
-        case .noneSelected: return // DO I NEED TO SHOW ERROR
+        case .noneSelected: return // Maybe add additional error handling
         }
     }
     
-    // Checks if called user has seleted both Genre and Runtime, returns true or false
+    // Checks if called user has selected both Genre and Runtime, returns true or false
     func isUserReady(user: User) -> Bool {
         switch user {
         case .user1:
@@ -45,7 +45,7 @@ class UserSelectionDatasource {
             } else {
                 return false
             }
-        case .noneSelected: return false //Do I NEED TO SHOW ERROR
+        case .noneSelected: return false // Maybe add additional error handling
         }
     }
     
@@ -58,7 +58,7 @@ class UserSelectionDatasource {
         }
     }
     
-    // Reset stored peoperties for user selectio back to nil
+    // Reset stored properties for user selection back to nil
     func resetUsers() {
         user1.chosenGenre = nil
         user1.maxRuntime = nil

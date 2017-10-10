@@ -24,7 +24,7 @@ class PickGenreController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set up tableview datasource and seperator colour
+        // Set up tableview datasource and separator colour
         tableView.dataSource = dataSource
         tableView.separatorColor = UIColor(red: 240/255, green: 177/255, blue: 177/255, alpha: 1)
         
@@ -58,14 +58,14 @@ extension PickGenreController: MovieRuntimeDelegate {
         performSegue(withIdentifier: "pickMaxRunTime", sender: nil)
     }
     
-    //Set Runtime Delegate to self and inform main Viewcotroller Genre selected
+    //Set Runtime Delegate to self and inform main View Controller Genre selected
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pickMaxRunTime" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 if let pickRuntimeViewController = segue.destination as? PickRuntimeController {
                     let genre = dataSource.genre(at: indexPath)
                     
-                    //Set Runtime Delefate to self
+                    //Set Runtime Delegate to self
                     pickRuntimeViewController.delegate = self
                     
                     //Tell pickRuntimeViewController which user is currently selected
@@ -74,11 +74,11 @@ extension PickGenreController: MovieRuntimeDelegate {
                     //Send picked genre for that user to main view controller
                     delegate?.recordGenreSelected(user: currentUser, genre: genre)
                 } else {
-                    // COULD NOT DETECT PICKRUNTIMECONTROLLER ERROR
+                    print("Unwrap of destination view controller did not work") // This case should never happen
                 }
             
             } else {
-                // COULD NOT GET SELECTED ROW ERROR
+                print("Unwrap of indexPath did not work") // This case should never happen
             }
             
         }

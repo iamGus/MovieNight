@@ -26,16 +26,16 @@ class MovieResultsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set up tableview dtasource and seperator colour
+        // Set up tableview datasource and separator colour
         tableView.dataSource = dataSource
         tableView.separatorColor = UIColor(red: 240/255, green: 177/255, blue: 177/255, alpha: 1)
-        
-        //ERROR LOGIC INCASE USER DATA DID NOT GET SENT?
         
         // Get Movie results from tmdb and update datasource
         client.getMovieSuggestions(sortBy: .popularityDesc, genres: userSelection.chosenGenres(), runtimeGreater: 59, runTimeLess: userSelection.averageMaxRuntime(), page: 1) { [weak self] result in
             switch result {
             case .success(let movies):
+                 //Below line not used, possible enhancement to release memory for when Details view reloaded with new films
+                //self?.dataSource.wipeOperations()
                 self?.dataSource.update(with: movies)
                 self?.tableView.reloadData()
             case .failure(let error):

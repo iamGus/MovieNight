@@ -19,7 +19,7 @@ class Genre: NSObject, JSONDecodable {
             static let tmdbName = "name"
         }
         
-        //Checks that, keys in JSON exsist, contain values and covertable to needed type
+        //Checks that keys in JSON exists, contain values and convertible to needed type
         guard let tmdbId = json[Key.tmdbId] as? Int,
             let tmdbName = json[Key.tmdbName] as? String else {
                 return nil

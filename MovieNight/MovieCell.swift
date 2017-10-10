@@ -19,7 +19,7 @@ class MovieCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        // Initialisation code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

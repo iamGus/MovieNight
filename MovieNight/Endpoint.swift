@@ -35,7 +35,7 @@ extension Endpoint {
 }
 
 enum TMDb {
-    /// A type that provides possible sort options for returned movie dicovery search
+    /// A type that provides possible sort options for returned movie discovery search
     enum TMDbSortType: CustomStringConvertible {
         case popularityAsc, popularityDesc, releaseDateAsc, releaseDateDesc, revenueAsc, revenueDesc, voteAverageAsc, voteAverageDesc, voteCountAsc, voteCountDesc
         
@@ -55,8 +55,8 @@ enum TMDb {
         }
     }
     
-    case genre() //NOTE SHOULD THIS BE TYPE ApiKey?
-    case dicover(sortBy: TMDbSortType, genres: [Genre], runtimeGreater: Int, runtimeLess: Int, page: Int)
+    case genre()
+    case discover(sortBy: TMDbSortType, genres: [Genre], runtimeGreater: Int, runtimeLess: Int, page: Int)
 }
 
 extension TMDb: Endpoint {
@@ -67,7 +67,7 @@ extension TMDb: Endpoint {
     var path: String {
         switch self {
         case .genre: return "/3/genre/movie/list"
-        case .dicover: return "/3/discover/movie"
+        case .discover: return "/3/discover/movie"
         }
     }
     
@@ -81,11 +81,11 @@ extension TMDb: Endpoint {
             return [
                 URLQueryItem(name: "api_key", value: apiKey)
             ]
-        case .dicover(let sortBy, let genres, let runtimeGreater, let runtimeLess, let page):
+        case .discover(let sortBy, let genres, let runtimeGreater, let runtimeLess, let page):
             return [
                 URLQueryItem(name: "api_key", value: apiKey),
                 URLQueryItem(name: "sort_by", value: sortBy.description),
-                URLQueryItem(name: "with_genres", value: genres.map({$0.id.description}).joined(separator: ",")), //Use map to take genres out of array and seperate the id by ,
+                URLQueryItem(name: "with_genres", value: genres.map({$0.id.description}).joined(separator: ",")), //Use map to take genres out of array and separate the id by ,
                 URLQueryItem(name: "with_runtime.gte", value: runtimeGreater.description),
                 URLQueryItem(name: "with_runtime.lte", value: runtimeLess.description),
                 URLQueryItem(name: "page", value: page.description)

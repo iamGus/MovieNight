@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Results come through this enum allowing easy switch statement on sucuss or failure.
+/// Results come through this enum allowing easy switch statement on success or failure.
 enum Result<T, U> where U: Error {
     case success(T)
     case failure(U)

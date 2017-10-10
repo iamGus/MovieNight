@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Model and data for Runtime, decided to keep data with model as of data never changing.
+
 struct Runtime {
     
     let hoursInText: String

@@ -15,12 +15,12 @@ enum MovieArtworkState {
     case failed
 }
 
-/// Stores the small amoune of movie data from a dicovery tmdb serach.
+/// Stores the small amount of movie data from a discovery tmdb search.
 class Movie: NSObject, JSONDecodable {
     let id: Int
     let title: String
     let overview: String
-    //let genres: [Genre]
+    //let genres: [Genre] // Currently does not record each movies genres, could do in future.
     let averageVote: Double
     var artworkUrl: String
     var artwork: UIImage?
@@ -37,7 +37,7 @@ class Movie: NSObject, JSONDecodable {
             static let artworkUrl = "poster_path"
         }
         
-        //Checks that keys in JSON exsist, contain values and covertable to needed type
+        //Checks that keys in JSON exists, contain values and convertible to needed type
         guard let tmdbId = json[Key.tmdbId] as? Int,
             let tmdbTitle = json[Key.tmdbTitle] as? String,
             let tmdbOverview = json[Key.tmdbOverview] as? String,
@@ -50,8 +50,8 @@ class Movie: NSObject, JSONDecodable {
         self.id = tmdbId
         self.title = tmdbTitle
         self.overview = tmdbOverview
-        //self.genres = tmdbGenres.flatMap { Genre(json: $0) } //Conver tmdv id of strings into
         self.averageVote = tmdbAverageVote
+        // As artwork url endpoint is only provided, add the full path onto the endpoint.
         self.artworkUrl = "https://image.tmdb.org/t/p/w92" + tmdbartworkUrl
     }
 }

@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     // To store what Genre and Runtime user 1 and 2 select before searching for films
     var userSelection = UserSelectionDatasource()
     
-    // Record which user currently selected for choices, note this is only being passed to other view controllers, other controllers then return selected user info with genre and runtime info. As we already know who is seected with this property is that needed? Modification could be to not pass back current user selected bu use this property with the selection datasource methods.
+    // Record which user currently selected for choices, note this is only being passed to other view controllers, other controllers then return selected user info with genre and runtime info. As we already know who is selected with this property is that needed? Modification could be to not pass back current user selected but use this property with the selection datasource methods.
     var currentUser: User = .noneSelected
     
 
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     }
     
     
-    // Set self as deligate for PickGenre controller.
+    // Set self as delegate for PickGenre controller.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let pickGenreViewController = segue.destination as? PickGenreController {
             pickGenreViewController.delegate = self
@@ -53,11 +53,11 @@ class ViewController: UIViewController {
             }
             
         } else {
-            print("Unwrapp of destination view controller did not work") // This case should never happen
+            print("Unwrap of destination view controller did not work") // This case should never happen
         }
     }
     
-    // Just so a unwide segue can be performed
+    // Just so a unwind segue can be performed
     @IBAction func unwindToVC1(segue: UIStoryboardSegue) {
     
     }
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
     // Clear user selection
     @IBAction func ClearSelectionButton(_ sender: Any) {
         currentUser = .noneSelected
-        userSelection.resetUsers() // Reset stored selction properties to nil
+        userSelection.resetUsers() // Reset stored selection properties to nil
         setStateOfSelection() // Set buttons back to empty
     }
 

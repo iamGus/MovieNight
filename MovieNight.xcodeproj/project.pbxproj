@@ -11,6 +11,7 @@
 		1805FD821F86A5E600278543 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1805FD811F86A5E600278543 /* MovieCell.swift */; };
 		180B29081F8CD6F70039BBD2 /* PendingOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B29071F8CD6F70039BBD2 /* PendingOperations.swift */; };
 		180B290A1F8CD9870039BBD2 /* ArtworkDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B29091F8CD9870039BBD2 /* ArtworkDownloader.swift */; };
+		180B290C1F8D09490039BBD2 /* VerticalTopAlignLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B290B1F8D09490039BBD2 /* VerticalTopAlignLabel.swift */; };
 		181EF2251F7CE3DB00B70039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EF2241F7CE3DB00B70039 /* AppDelegate.swift */; };
 		181EF2271F7CE3DB00B70039 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EF2261F7CE3DB00B70039 /* ViewController.swift */; };
 		181EF22A1F7CE3DB00B70039 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 181EF2281F7CE3DB00B70039 /* Main.storyboard */; };
@@ -19,7 +20,6 @@
 		181EF2391F7CE77000B70039 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181EF2381F7CE77000B70039 /* Endpoint.swift */; };
 		18371AF01F83A4FD00EB4427 /* MovieResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18371AEF1F83A4FD00EB4427 /* MovieResultsViewController.swift */; };
 		18371AF21F83A6B200EB4427 /* MovieResultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18371AF11F83A6B200EB4427 /* MovieResultsDataSource.swift */; };
-		18371AF41F83C7D500EB4427 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18371AF31F83C7D500EB4427 /* Notification.swift */; };
 		18F61A2B1F7E223B006F9F9D /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F61A2A1F7E223B006F9F9D /* Movie.swift */; };
 		18F61A2F1F7E529E006F9F9D /* PickGenreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F61A2E1F7E529E006F9F9D /* PickGenreController.swift */; };
 		18F61A311F7E5602006F9F9D /* GenreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F61A301F7E5602006F9F9D /* GenreDataSource.swift */; };
@@ -40,6 +40,7 @@
 		1805FD811F86A5E600278543 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		180B29071F8CD6F70039BBD2 /* PendingOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingOperations.swift; sourceTree = "<group>"; };
 		180B29091F8CD9870039BBD2 /* ArtworkDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkDownloader.swift; sourceTree = "<group>"; };
+		180B290B1F8D09490039BBD2 /* VerticalTopAlignLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalTopAlignLabel.swift; sourceTree = "<group>"; };
 		181EF2211F7CE3DB00B70039 /* MovieNight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieNight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		181EF2241F7CE3DB00B70039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		181EF2261F7CE3DB00B70039 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +51,6 @@
 		181EF2381F7CE77000B70039 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		18371AEF1F83A4FD00EB4427 /* MovieResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieResultsViewController.swift; sourceTree = "<group>"; };
 		18371AF11F83A6B200EB4427 /* MovieResultsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieResultsDataSource.swift; sourceTree = "<group>"; };
-		18371AF31F83C7D500EB4427 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		18F61A2A1F7E223B006F9F9D /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		18F61A2E1F7E529E006F9F9D /* PickGenreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickGenreController.swift; sourceTree = "<group>"; };
 		18F61A301F7E5602006F9F9D /* GenreDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreDataSource.swift; sourceTree = "<group>"; };
@@ -119,6 +119,7 @@
 				18F61A2D1F7E51F4006F9F9D /* DataSource */,
 				181EF2361F7CE6CB00B70039 /* Model */,
 				181EF2241F7CE3DB00B70039 /* AppDelegate.swift */,
+				180B290B1F8D09490039BBD2 /* VerticalTopAlignLabel.swift */,
 				181EF2281F7CE3DB00B70039 /* Main.storyboard */,
 				181EF22B1F7CE3DB00B70039 /* Assets.xcassets */,
 				181EF22D1F7CE3DB00B70039 /* LaunchScreen.storyboard */,
@@ -134,7 +135,6 @@
 				18F61A581F7EA16F006F9F9D /* Runtime.swift */,
 				18F61A2A1F7E223B006F9F9D /* Movie.swift */,
 				18F711F11F82383C00EC1CF6 /* User.swift */,
-				18371AF31F83C7D500EB4427 /* Notification.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -257,11 +257,11 @@
 				18F61A591F7EA16F006F9F9D /* Runtime.swift in Sources */,
 				18F61A311F7E5602006F9F9D /* GenreDataSource.swift in Sources */,
 				18F61A571F7E8C28006F9F9D /* PickRuntimeController.swift in Sources */,
+				180B290C1F8D09490039BBD2 /* VerticalTopAlignLabel.swift in Sources */,
 				181EF2391F7CE77000B70039 /* Endpoint.swift in Sources */,
 				18F711F41F82836E00EC1CF6 /* UserSelectionDatasource.swift in Sources */,
 				18F711F21F82383C00EC1CF6 /* User.swift in Sources */,
 				181EF2251F7CE3DB00B70039 /* AppDelegate.swift in Sources */,
-				18371AF41F83C7D500EB4427 /* Notification.swift in Sources */,
 				1805FD821F86A5E600278543 /* MovieCell.swift in Sources */,
 				18F711EC1F82223E00EC1CF6 /* RuntimeDataSource.swift in Sources */,
 				18371AF01F83A4FD00EB4427 /* MovieResultsViewController.swift in Sources */,

@@ -21,7 +21,7 @@ class PickRuntimeController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Setup tableview datasource and seperator colour
+        // Setup tableview datasource and separator colour
         tableView.dataSource = dataSource
         tableView.separatorColor = UIColor(red: 240/255, green: 177/255, blue: 177/255, alpha: 1)
     }
@@ -37,11 +37,11 @@ extension PickRuntimeController {
         if segue.identifier == "unwindSegueToVC1" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let runtime = dataSource.runtime(at: indexPath)
-                //Send picked genre for that user to genre view controller
+                //Send picked genre for that user to genre viewcontroller
                 delegate?.recordRuntimeSelectedFromV3(user: currentUser, runtime: runtime)
                 
             } else {
-                print("Unwrapp of destination view controller did not work") // This case should never happen
+                print("Unwrap of indexPath did not work") // This case should never happen
             }
         }
     }

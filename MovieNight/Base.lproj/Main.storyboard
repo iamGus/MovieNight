@@ -47,7 +47,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aAe-qi-KhX">
-                                <rect key="frame" x="31" y="478" width="258" height="70"/>
+                                <rect key="frame" x="31" y="438" width="258" height="70"/>
                                 <color key="backgroundColor" red="0.74912261962890625" green="0.34690999984741211" blue="0.34551018476486206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="PQR-0C-yKp"/>
@@ -68,10 +68,26 @@
                                     <segue destination="NlL-3i-Hkg" kind="show" id="kRX-d6-an9"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This product uses the TMDb API but is not endorsed or certified by TMDb." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOB-bP-M3j">
+                                <rect key="frame" x="58" y="518" width="231" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="NVZ-LH-mmD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tmdbLogo" translatesAutoresizingMaskIntoConstraints="NO" id="0qN-pu-LDy">
+                                <rect key="frame" x="10" y="518" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="oC1-rF-u5y"/>
+                                    <constraint firstAttribute="height" constant="40" id="zZM-NO-Nfr"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aAe-qi-KhX" secondAttribute="bottom" constant="20" id="3rK-Js-W20"/>
+                            <constraint firstItem="0qN-pu-LDy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="0uF-Fk-hMH"/>
                             <constraint firstItem="A1V-4W-0aL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4to-as-BpD"/>
                             <constraint firstItem="A1V-4W-0aL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-25" id="E2q-nD-kD7"/>
                             <constraint firstItem="aAe-qi-KhX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="15" id="LAj-oo-rb2"/>
@@ -79,8 +95,13 @@
                             <constraint firstAttribute="trailing" secondItem="Thu-xh-AAz" secondAttribute="trailing" id="Pjd-9m-iVG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Thu-xh-AAz" secondAttribute="bottom" id="Vrl-D2-ezD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aAe-qi-KhX" secondAttribute="trailing" constant="15" id="W3O-7E-lLe"/>
+                            <constraint firstAttribute="bottom" secondItem="0qN-pu-LDy" secondAttribute="bottom" constant="10" id="Xe1-Ae-Hig"/>
                             <constraint firstAttribute="trailing" secondItem="A1V-4W-0aL" secondAttribute="trailing" id="Y3x-Kd-Joe"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NOB-bP-M3j" secondAttribute="bottom" constant="10" id="cZj-GA-4dt"/>
+                            <constraint firstItem="NOB-bP-M3j" firstAttribute="leading" secondItem="0qN-pu-LDy" secondAttribute="trailing" constant="8" id="lvW-ND-Afe"/>
                             <constraint firstItem="Thu-xh-AAz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="pVY-j8-nqT"/>
+                            <constraint firstItem="0qN-pu-LDy" firstAttribute="top" secondItem="aAe-qi-KhX" secondAttribute="bottom" constant="10" id="sam-UZ-ksv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NOB-bP-M3j" secondAttribute="trailing" constant="15" id="vSe-Ne-8we"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Movie Night" id="exy-ee-xD3">
@@ -99,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1152.8" y="-583.3583208395803"/>
+            <point key="canvasLocation" x="1151.25" y="-584.15492957746483"/>
         </scene>
         <!--Movie Results View Controller-->
         <scene sceneID="yX2-eT-1nJ">
@@ -124,20 +145,23 @@
                                                 <constraint firstAttribute="width" constant="80" id="nVM-05-QEb"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gO-ST-8Mf">
-                                            <rect key="frame" x="88" y="8" width="93" height="23"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gO-ST-8Mf" customClass="VerticalTopAlignLabel" customModule="MovieNight" customModuleProvider="target">
+                                            <rect key="frame" x="88" y="8" width="216" height="43"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="43" id="xa1-Lo-Zrs"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6F5-eb-ID6">
-                                            <rect key="frame" x="88" y="39" width="58" height="21"/>
+                                            <rect key="frame" x="88" y="53" width="58" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RatingNu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4r9-3F-nO8">
-                                            <rect key="frame" x="154" y="39" width="71" height="21"/>
+                                            <rect key="frame" x="154" y="53" width="71" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -145,9 +169,10 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="5gO-ST-8Mf" firstAttribute="top" secondItem="fvX-kK-P3D" secondAttribute="top" constant="8" id="1cW-bK-Zd7"/>
-                                        <constraint firstItem="6F5-eb-ID6" firstAttribute="top" secondItem="5gO-ST-8Mf" secondAttribute="bottom" constant="8" id="S1s-4D-dSp"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="5gO-ST-8Mf" secondAttribute="trailing" constant="8" id="RQE-15-PGd"/>
+                                        <constraint firstItem="6F5-eb-ID6" firstAttribute="top" secondItem="5gO-ST-8Mf" secondAttribute="bottom" constant="2" id="S1s-4D-dSp"/>
                                         <constraint firstItem="VFa-6Z-57x" firstAttribute="leading" secondItem="fvX-kK-P3D" secondAttribute="leading" id="bVW-mo-Kv0"/>
-                                        <constraint firstItem="4r9-3F-nO8" firstAttribute="top" secondItem="5gO-ST-8Mf" secondAttribute="bottom" constant="8" id="gO9-iM-mXC"/>
+                                        <constraint firstItem="4r9-3F-nO8" firstAttribute="top" secondItem="5gO-ST-8Mf" secondAttribute="bottom" constant="2" id="gO9-iM-mXC"/>
                                         <constraint firstItem="VFa-6Z-57x" firstAttribute="top" secondItem="fvX-kK-P3D" secondAttribute="top" constant="5" id="muu-pj-hAO"/>
                                         <constraint firstItem="6F5-eb-ID6" firstAttribute="leading" secondItem="VFa-6Z-57x" secondAttribute="trailing" constant="8" id="nj8-OV-P5x"/>
                                         <constraint firstItem="4r9-3F-nO8" firstAttribute="leading" secondItem="6F5-eb-ID6" secondAttribute="trailing" constant="8" id="ntg-BU-51D"/>
@@ -183,7 +208,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose your favorite genre below" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eu0-vG-Z9g">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose your favourite genre below" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eu0-vG-Z9g">
                                     <rect key="frame" x="5" y="5" width="310" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <nil key="textColor"/>
@@ -300,6 +325,7 @@
         <image name="bg-iphone6plus" width="620" height="1104"/>
         <image name="bubble-empty" width="123" height="97"/>
         <image name="moviePlaceholder" width="1024" height="1024"/>
+        <image name="tmdbLogo" width="312" height="276"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="AAT-H0-nQB"/>

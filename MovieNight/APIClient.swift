@@ -16,7 +16,7 @@ enum APIError: Error {
     case responseUnsuccessful
     case jsonParsingFailure
     
-    //Readable desription of error
+    //Readable description of error
     var errorDescription: String {
         switch self {
         case .requestFailed: return "Request Failed"
@@ -31,7 +31,7 @@ enum APIError: Error {
 protocol APIClient {
     var session: URLSession { get }
     
-    /// ADD DESCRIPTION
+    
     func fetch<T: JSONDecodable>(with request: URLRequest, parse: @escaping (JSON) -> [T], completion: @escaping (Result<[T], APIError>) -> Void)
 }
 
@@ -66,7 +66,7 @@ extension APIClient {
         
         return task
     }
-    ///Description
+    /// Generic method to call jsonTask and see if data can be parsed, if it can then return JSON
     func fetch<T: JSONDecodable>(with request: URLRequest, parse: @escaping (JSON) -> [T], completion: @escaping (Result<[T], APIError>) -> Void) {
         let task = jsonTask(with: request) { json, error in
             
@@ -75,13 +75,13 @@ extension APIClient {
                     if let error = error {
                         completion(Result.failure(error))
                     } else {
-                        completion(Result.failure(.invalidData)) // If no spisific error message give generic error
+                        completion(Result.failure(.invalidData)) // If no specific error message give generic error
                     }
                     
                     return // return from error
                 }
                 
-                let value = parse(json) // If data is sucesfully parsed
+                let value = parse(json) // If data is successfully parsed
                 
                 if !value.isEmpty {
                     completion(Result.success(value))

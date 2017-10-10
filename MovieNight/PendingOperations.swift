@@ -12,6 +12,6 @@ class PendingOperations {
     // Tracking each movie image operation with cell indexpath
     var downloadsInProgress = [IndexPath: Operation]()
     
-    let downloadQueue = OperationQueue()
+    var downloadQueue = OperationQueue()
     
 }

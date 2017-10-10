@@ -17,7 +17,7 @@ struct MovieCellViewModel {
 
 extension MovieCellViewModel {
     init(movie: Movie) {
-        // If If movie artwork state marked as downloaded then use movie artwork UIimage property, otherwise use placeholder
+        // If movie artwork state marked as downloaded then use movie artwork UIimage property, otherwise use placeholder
         self.image = movie.artworkState == .downloaded ? movie.artwork! : #imageLiteral(resourceName: "moviePlaceholder")
         self.title = movie.title
         self.avereageVote = String(movie.averageVote)

@@ -6,7 +6,7 @@
 //  Copyright © 2017 Angus Muller. All rights reserved.
 //
 
-// Note: Currently if user goes abck to do another search then I dont think the catch of images is released from memory.
+// Note: Currently if user goes back to do another search then I don't think the catch of images is released from memory. Can be additional feature for next update.
 
 
 import Foundation
@@ -38,7 +38,7 @@ class MovieResultsDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Define MovieCell class as resusable cell
+        // Define MovieCell class as reusable cell
         let movieCell = tableView.dequeueReusableCell(withIdentifier: MovieCell.reuseIdentifier, for: indexPath) as! MovieCell
         
         let movie = movies[indexPath.row]
@@ -79,7 +79,7 @@ class MovieResultsDataSource: NSObject, UITableViewDataSource {
             }
             
             DispatchQueue.main.async {
-                //Update pending operations class
+                // Update pending operations class
                 self.pendingOperations.downloadsInProgress.removeValue(forKey: indexPath)
                 self.tableView.reloadRows(at: [indexPath], with: .automatic)
             }
@@ -88,6 +88,12 @@ class MovieResultsDataSource: NSObject, UITableViewDataSource {
         pendingOperations.downloadsInProgress[indexPath] = downloader
         pendingOperations.downloadQueue.addOperation(downloader)
         
+    }
+    
+    //Below not used, possible enhancement to release memory for when Details view reloaded with new films, needs more research
+    func wipeOperations() {
+        pendingOperations.downloadsInProgress = [IndexPath: Operation]()
+        pendingOperations.downloadQueue = OperationQueue()
     }
     
     
