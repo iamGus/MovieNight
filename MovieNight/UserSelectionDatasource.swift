@@ -6,6 +6,8 @@
 //  Copyright © 2017 Angus Muller. All rights reserved.
 //
 
+// User selection choices stored here and also functions to pull data out
+
 import Foundation
 
 class UserSelectionDatasource {
@@ -69,9 +71,14 @@ class UserSelectionDatasource {
     //Return both user Genres
     func chosenGenres() -> [Genre] {
         if let user1Genre = user1.chosenGenre, let user2Genre = user2.chosenGenre {
+            // If both users selected same Genre then only return one instance of that genre
+            if user1Genre.id == user2Genre.id {
+                return [user1Genre]
+            }
+            // Otherwise return both genres
             return [user1Genre, user2Genre]
         }
-        return [] // DO I NEED TO DO ANYTHING HERE?
+        return [] // This should never happen as users can only get to movie results if both have entered choices.
     }
     
     func averageMaxRuntime() -> Int {
@@ -81,7 +88,7 @@ class UserSelectionDatasource {
             return averageRuntime
         }
         
-        return 130 // DO I NEED TO DO ANYTHING HERE?
+        return 130 // This should never happen as users can only get to movie results if both have entered choices.
     }
     
 }

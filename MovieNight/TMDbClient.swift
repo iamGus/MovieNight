@@ -35,6 +35,7 @@ class TMDbClient: APIClient {
         
         let endpoint = TMDb.dicover(sortBy: sortBy, genres: genres, runtimeGreater: runtimeGreater, runtimeLess: runTimeLess, page: page)
         let request = endpoint.request
+        print(request)
         
         fetch(with: request, parse: { json -> [Movie] in
             guard let allMovies = json["results"] as? [[String: Any]] else { return [] }
