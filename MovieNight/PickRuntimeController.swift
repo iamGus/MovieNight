@@ -41,7 +41,7 @@ extension PickRuntimeController {
                 delegate?.recordRuntimeSelectedFromV3(user: currentUser, runtime: runtime)
                 
             } else {
-                // Indexpath not unwrapped error
+                print("Unwrapp of destination view controller did not work") // This case should never happen
             }
         }
     }

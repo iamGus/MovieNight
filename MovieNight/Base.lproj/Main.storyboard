@@ -110,13 +110,55 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" id="T99-v0-7ty">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="80" id="T99-v0-7ty" customClass="MovieCell" customModule="MovieNight" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T99-v0-7ty" id="fvX-kK-P3D">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moviePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="VFa-6Z-57x">
+                                            <rect key="frame" x="0.0" y="5" width="80" height="70"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="70" id="Z64-PY-6to"/>
+                                                <constraint firstAttribute="width" constant="80" id="nVM-05-QEb"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gO-ST-8Mf">
+                                            <rect key="frame" x="88" y="8" width="93" height="23"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6F5-eb-ID6">
+                                            <rect key="frame" x="88" y="39" width="58" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RatingNu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4r9-3F-nO8">
+                                            <rect key="frame" x="154" y="39" width="71" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="5gO-ST-8Mf" firstAttribute="top" secondItem="fvX-kK-P3D" secondAttribute="top" constant="8" id="1cW-bK-Zd7"/>
+                                        <constraint firstItem="6F5-eb-ID6" firstAttribute="top" secondItem="5gO-ST-8Mf" secondAttribute="bottom" constant="8" id="S1s-4D-dSp"/>
+                                        <constraint firstItem="VFa-6Z-57x" firstAttribute="leading" secondItem="fvX-kK-P3D" secondAttribute="leading" id="bVW-mo-Kv0"/>
+                                        <constraint firstItem="4r9-3F-nO8" firstAttribute="top" secondItem="5gO-ST-8Mf" secondAttribute="bottom" constant="8" id="gO9-iM-mXC"/>
+                                        <constraint firstItem="VFa-6Z-57x" firstAttribute="top" secondItem="fvX-kK-P3D" secondAttribute="top" constant="5" id="muu-pj-hAO"/>
+                                        <constraint firstItem="6F5-eb-ID6" firstAttribute="leading" secondItem="VFa-6Z-57x" secondAttribute="trailing" constant="8" id="nj8-OV-P5x"/>
+                                        <constraint firstItem="4r9-3F-nO8" firstAttribute="leading" secondItem="6F5-eb-ID6" secondAttribute="trailing" constant="8" id="ntg-BU-51D"/>
+                                        <constraint firstItem="5gO-ST-8Mf" firstAttribute="leading" secondItem="VFa-6Z-57x" secondAttribute="trailing" constant="8" id="rii-7b-BlZ"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="artworkView" destination="VFa-6Z-57x" id="Z1x-ki-4Vl"/>
+                                    <outlet property="movieTitleLabel" destination="5gO-ST-8Mf" id="LWo-ow-F3z"/>
+                                    <outlet property="ratingLabel" destination="4r9-3F-nO8" id="bED-rR-C3I"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -257,6 +299,7 @@
     <resources>
         <image name="bg-iphone6plus" width="620" height="1104"/>
         <image name="bubble-empty" width="123" height="97"/>
+        <image name="moviePlaceholder" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="AAT-H0-nQB"/>

@@ -6,20 +6,25 @@
 //  Copyright © 2017 Angus Muller. All rights reserved.
 //
 
+// Note: Currently if user goes abck to do another search then I dont think the catch of images is released from memory.
+
+
 import Foundation
 import UIKit
 
 class MovieResultsDataSource: NSObject, UITableViewDataSource {
     
-    private var data = [Movie]()
+    private var movies = [Movie]()
     
-    override init() {
+    let pendingOperations = PendingOperations()
+    let tableView: UITableView
+    
+    init(movies: [Movie], tableView: UITableView) {
+        self.movies = movies
+        self.tableView = tableView
         super.init()
     }
     
-    func update(with movies: [Movie]) {
-        data = movies
-    }
     
     // Mark: - Data Source
     
@@ -29,23 +34,61 @@ class MovieResultsDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath)
+        // Define MovieCell class as resusable cell
+        let movieCell = tableView.dequeueReusableCell(withIdentifier: MovieCell.reuseIdentifier, for: indexPath) as! MovieCell
         
-        let movie = data[indexPath.row]
-        cell.textLabel?.text = movie.title
+        let movie = movies[indexPath.row]
+        let viewModel = MovieCellViewModel(movie: movie) // Get viewmodel of cell
         
-        return cell
+        movieCell.configure(with: viewModel) // pass viewmodel of cell to cell view
+        
+        if movie.artworkState == .placeholder {
+            downloadArtworkForMovie(movie, atIndexPath: indexPath)
+        }
+        
+        return movieCell
     }
     
     // MARK: - Helper
     
     //Return movie data for just that selected row
-    func genre(at indexPath: IndexPath) -> Movie {
-        return data[indexPath.row]
+    func movie(at indexPath: IndexPath) -> Movie {
+        return movies[indexPath.row]
     }
+    
+    func update(with movies: [Movie]) {
+        self.movies = movies
+    }
+    
+    func downloadArtworkForMovie(_ movie: Movie, atIndexPath indexPath: IndexPath) {
+        //If Operation for that cell in already in progress then return
+        if let _ = pendingOperations.downloadsInProgress[indexPath] {
+            return
+        }
+        
+        let downloader = ArtworkDownloader(movie: movie)
+        
+        // Run artwork downloader on completion block
+        downloader.completionBlock = {
+            if downloader.isCancelled {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                //Update pending operations class
+                self.pendingOperations.downloadsInProgress.removeValue(forKey: indexPath)
+                self.tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+        }
+        
+        pendingOperations.downloadsInProgress[indexPath] = downloader
+        pendingOperations.downloadQueue.addOperation(downloader)
+        
+    }
+    
     
 }

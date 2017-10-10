@@ -53,7 +53,7 @@ class ViewController: UIViewController {
             }
             
         } else {
-            // If let to view contoller did not work
+            print("Unwrapp of destination view controller did not work") // This case should never happen
         }
     }
     
@@ -68,9 +68,9 @@ class ViewController: UIViewController {
         userSelection.resetUsers() // Reset stored selction properties to nil
         setStateOfSelection() // Set buttons back to empty
     }
-    
 
 }
+
 // MARK: - User selection
 extension ViewController: MovieGenreDelegate {
     
@@ -91,14 +91,14 @@ extension ViewController: MovieGenreDelegate {
         if userSelection.isUserReady(user: .user1) {
             userButton1Label.setImage(#imageLiteral(resourceName: "bubble-selected"), for: .normal)
         } else {
-            // set user 1 not ready state
+            // set user 1 to not ready state
             userButton1Label.setImage(#imageLiteral(resourceName: "bubble-empty"), for: .normal)
         }
         
         if userSelection.isUserReady(user: .user2) {
             userButton2Label.setImage(#imageLiteral(resourceName: "bubble-selected"), for: .normal)
         } else {
-            //set user 2 not ready
+            // set user 2 to not ready state
             userButton2Label.setImage(#imageLiteral(resourceName: "bubble-empty"), for: .normal)
         }
     }

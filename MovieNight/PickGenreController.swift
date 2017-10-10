@@ -35,7 +35,13 @@ class PickGenreController: UITableViewController {
                 self?.dataSource.update(with: genres) // update datasource
                 self?.tableView.reloadData() // Reload table data
             case.failure(let error):
-                print(error)
+                switch error {
+                case .requestFailed: self?.showAlert(title: "Alert", message: "No network connection, please try again later")
+                case .responseUnsuccessful: print("\(APIError.responseUnsuccessful.errorDescription)")
+                case .invalidData: print("\(APIError.invalidData.errorDescription)")
+                case .jsonConversionFailure: print("\(APIError.jsonConversionFailure.errorDescription)")
+                case .jsonParsingFailure: print("\(APIError.jsonParsingFailure.errorDescription)")
+                }
             }
         }
 
@@ -84,7 +90,6 @@ extension PickGenreController: MovieRuntimeDelegate {
     delegate?.recordRuntimeSelected(user: user, runtime: runtime)
     }
     
-    // MARK: - Notifications
     
     // Generic alert pop up function used for all error handling notifications
     func showAlert(title: String, message: String, style: UIAlertControllerStyle = .alert) {

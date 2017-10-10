@@ -10,8 +10,17 @@ import UIKit
 
 class MovieResultsViewController: UITableViewController {
     
+    struct Constants {
+        static let albumCellHeight: CGFloat = 80
+    }
+    
     var userSelection = UserSelectionDatasource()
-    let dataSource = MovieResultsDataSource()
+    
+    lazy var dataSource: MovieResultsDataSource = {
+        return MovieResultsDataSource(movies: [], tableView: self.tableView)
+    }()
+    
+    
     let client = TMDbClient()
 
     override func viewDidLoad() {
@@ -30,11 +39,37 @@ class MovieResultsViewController: UITableViewController {
                 self?.dataSource.update(with: movies)
                 self?.tableView.reloadData()
             case .failure(let error):
-                print(error)
+                switch error {
+                case .requestFailed: self?.showAlert(title: "Alert", message: "No network connection, please try again later")
+                case .responseUnsuccessful: print("\(APIError.responseUnsuccessful.errorDescription)")
+                case .invalidData: print("\(APIError.invalidData.errorDescription)")
+                case .jsonConversionFailure: print("\(APIError.jsonConversionFailure.errorDescription)")
+                case .jsonParsingFailure: print("\(APIError.jsonParsingFailure.errorDescription)")
+                }
             }
         }
         
     }
+}
 
-
+extension MovieResultsViewController {
+    
+    // MARK: - Table View Delegate
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constants.albumCellHeight
+    }
+    
+    
+    // MARK: - Notifications
+    
+    // Generic alert pop up function used for all error handling notifications
+    func showAlert(title: String, message: String, style: UIAlertControllerStyle = .alert) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+        
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
 }
